@@ -15,7 +15,7 @@ void enter_arr_file(int *a);
 void new_arr(int *a,int *b);
 int digit_n(int *a);
 void print_arr_file(int *a);
-int menu();
+void menu();
 char get_arrow(int *select,int options);
 void print_menu(int *select);
 void print_submenu(int *select,int menu);
@@ -73,7 +73,7 @@ void print_arr_file(int *a)
 
 void min_number_row(int *a)
 {
-    int i, row_c = 1, min = a[0], row = 1;
+    int i, min = a[0], row = 1;
 
     for(i = 0;i < SIZE; i++)
     {
@@ -88,10 +88,10 @@ void min_number_row(int *a)
 
 void enter_arr(int *a)
 {
-    int i = 0,j,err,k;
+    int i = 0,j,err;
     for(i = 0;i < SIZE;i++)
     {
-        printf("Enter element %d:\n", i); 
+        printf("Enter element %d:\n", i);
         do{
           char s[10];
           scanf("%s",s);
@@ -145,7 +145,7 @@ void enter_arr_file(int *a)
 
                 while(buff[i] >= '0' && buff[i] <= '9')
                 {
-                    number = number * 10  +  (buff[i] - '0'); 
+                    number = number * 10  +  (buff[i] - '0');
                     i++;
                 }
                 a[j] = number * c;
@@ -198,7 +198,7 @@ void new_arr(int *a,int *b)
 
 int digit_n(int *a)
 {
-    int digit,count,i;
+    int digit,count = 0,i;
     char ch;
 
     printf("enter digit:\n");
@@ -206,7 +206,7 @@ int digit_n(int *a)
         ch = getchar();
     }while(ch < '0' || ch > '9');
 
-    digit = ch - '0'; 
+    digit = ch - '0';
 
     for(i = 0;i < size;i++)
     {
@@ -225,17 +225,16 @@ int digit_n(int *a)
 }
 
 
-int menu()
+void menu()
 {
-    
+
     int a[SIZE], b[SIZE];
-    int i;
-    
+
     int select[2] = {1, 1};
         while(1)
         {
             print_menu(&select[0]);
-        
+
            if(get_arrow(&select[0],3) == CR)
            {
                 if(select[0] == 1)
@@ -311,10 +310,10 @@ int menu()
                 else if(select[0] == 3)
                     break;
            }
-            
+
         }
 }
- 
+
 char get_arrow(int *select,int options)
 {
 
@@ -337,8 +336,9 @@ char get_arrow(int *select,int options)
 
         }
     }
-    else 
+    else
         return ch;
+    return 0;
 
 }
 
